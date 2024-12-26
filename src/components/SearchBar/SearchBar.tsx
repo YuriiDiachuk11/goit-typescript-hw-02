@@ -2,18 +2,22 @@ import { useRef } from "react";
 import toast from "react-hot-toast";
 import s from "./SearchBar.module.css";
 
-const SearchBar = ({ onSubmit }) => {
-  const inputRef = useRef(null);
+type SearchBarProps = {
+  onSubmit: (searchTerm: string) => void;
+};
 
-  const handleSubmit = (e) => {
+const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formSearch = inputRef.current.value.trim();
+    const formSearch = inputRef.current?.value.trim();
     if (!formSearch) {
       toast.error("Please enter text to search for images.");
       return;
     }
     onSubmit(formSearch);
-    inputRef.current.value = "";
+    inputRef.current!.value = "";
   };
 
   return (

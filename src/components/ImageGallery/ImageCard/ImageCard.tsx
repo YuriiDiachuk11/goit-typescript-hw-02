@@ -1,8 +1,14 @@
 import { useState } from "react";
 import s from "./ImageCard.module.css";
+import { ImageData } from "../../App/App.types";
 
-const ImageCard = ({ card, onImageClick }) => {
-  const [loaded, setLoaded] = useState(false);
+type ImageCardProps = {
+  card: ImageData;
+  onImageClick: (card: ImageData) => void;
+};
+
+const ImageCard: React.FC<ImageCardProps> = ({ card, onImageClick }) => {
+  const [loaded, setLoaded] = useState<boolean>(false);
 
   return (
     <div className={s.imageBox}>

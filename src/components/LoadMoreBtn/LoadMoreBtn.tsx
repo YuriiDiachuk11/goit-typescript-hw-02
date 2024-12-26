@@ -1,5 +1,12 @@
+import React from "react";
 import s from "./LoadMoreBtn.module.css";
-const LoadMoreBtn = ({ onClick, disabled }) => {
+
+type LoadMoreBtnProps = {
+  onClick: () => void;
+  disabled: boolean;
+};
+
+const LoadMoreBtn: React.FC<LoadMoreBtnProps> = ({ onClick, disabled }) => {
   return (
     <div className={s.buttonBox}>
       <button
@@ -13,4 +20,5 @@ const LoadMoreBtn = ({ onClick, disabled }) => {
     </div>
   );
 };
+
 export default LoadMoreBtn;
